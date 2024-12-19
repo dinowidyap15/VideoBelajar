@@ -773,6 +773,11 @@ img {
   cursor: pointer;
 }
 
+.footer-icons svg {
+  width: 37px;
+  height: 37px;
+}
+
 
 /* Responsive */
 @media screen and (max-width: 768px) {
@@ -1133,10 +1138,5 @@ img {
 
   .footer-icons {
     gap: 15px;
-  }
-  
-  .footer-icons svg {
-    width: 37px;
-    height: 37px;
   }
 }
