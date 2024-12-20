@@ -544,7 +544,7 @@ nav {
 
 .hero-image-container {
   position: relative;
-  min-height: 506px;
+  min-height: 514px;
   background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("assets/images/img5.jpg");
   background-position: center center;
   background-size: cover;
@@ -559,7 +559,7 @@ nav {
   text-align: center;
   align-items: center;
   padding: 100px 140px;
-  gap: 24px;
+  gap: 30px;
 }
 
 .collection-header-container {
