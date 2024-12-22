@@ -1219,6 +1219,7 @@ img {
     gap: 15px;
   }
 }
+<<<<<<< HEAD
 
 
 @media (max-width: 480px) {
@@ -1340,3 +1341,5 @@ img {
     padding: 20px;
   }
 }
+=======
+>>>>>>> dc4b71b308f9f03ebf321de8dedd52a85fe5b7d8
