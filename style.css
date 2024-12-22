@@ -1110,13 +1110,13 @@ img {
   }
   
   .cta-content {
-    padding: 38px 20px;
+    padding: 38px 30px;
     gap: 8px;
   }
 
   .cta-form {
-    width: 280px;
-    height: 48px;
+    width: 100%;
+    height: 46px;
     display: flex;
     flex-direction: row;
     padding: 10px 12px 10px 8px;
@@ -1144,8 +1144,8 @@ img {
     display: block;
     margin-top: 8px;
     font-size: 16px;
-    width: 280px;
-    height: 48px;
+    width: 100%;
+    height: 46px;
   }
 
   .footer-section-container {
@@ -1153,7 +1153,7 @@ img {
   }
   
   .footer {
-    height: 400px;
+    height: 100%;
     padding: 30px;
   }
   
@@ -1219,7 +1219,6 @@ img {
     gap: 15px;
   }
 }
-<<<<<<< HEAD
 
 
 @media (max-width: 480px) {
@@ -1250,7 +1249,6 @@ img {
   .ham-menu {
     display: block;
   }
-  
 
   .login-section {
     padding: 28px 20px;
@@ -1337,9 +1335,8 @@ img {
   }
 
   .footer {
-    height: 365px;
+    height: 100%;
     padding: 20px;
   }
 }
-=======
->>>>>>> dc4b71b308f9f03ebf321de8dedd52a85fe5b7d8
+
