@@ -544,7 +544,7 @@ nav {
 
 .hero-image-container {
   position: relative;
-  min-height: 506px;
+  min-height: 514px;
   background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("assets/images/img5.jpg");
   background-position: center center;
   background-size: cover;
@@ -559,7 +559,7 @@ nav {
   text-align: center;
   align-items: center;
   padding: 100px 140px;
-  gap: 24px;
+  gap: 30px;
 }
 
 .collection-header-container {
@@ -660,6 +660,11 @@ nav {
   width: 100%;
 }
 
+.collection-card-footer svg {
+  width: 151px; 
+  height: 21px;
+}
+
 .price {
   font-size: 24px;
   color: var(--primary-400);
@@ -715,6 +720,11 @@ img {
   justify-content: space-between;
   align-items: flex-start;
   gap: 90px;
+}
+
+.footer-logo {
+  width: 194px;
+  height: 31px;
 }
 
 .footer-header p {
@@ -779,18 +789,115 @@ img {
 }
 
 
-/* Responsive */
-@media screen and (max-width: 768px) {
+@media (max-width: 1192px) {
+
+  .section-container {
+    padding: 50px 90px 0px 90px;
+  }
+
+  .hero-image-container {
+    min-height: 314px;
+  }
+  
+  nav {
+    padding: 12px 90px;
+  }
+
+  .collection-card-footer svg {
+    width: 145px; 
+    height: 19px;
+  }
+  
+  .price {
+    font-size: 20px;
+  }
+
+  .footer-section-container {
+    padding-top: 50px;
+  }
+
+  .footer {
+    padding: 50px 90px;
+  }
+  
+}
+
+
+@media (max-width: 1100px) {
+
+  .section-container {
+    padding: 40px 60px 0px 60px;
+  }
+
+  h1 {
+    font-size: 40px;
+    line-height: 1.1;
+  }
+  
+  .body-large-2 {
+    font-size: 16px;
+  }
+  
+  p {
+    line-height: 1.3;
+  }
+  
+  nav {
+    padding: 12px 60px;
+  }
+
+  .hero-content {
+    padding: 60px 100px;
+    gap: 20px;
+  }
+
+  .collection-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  } 
+
+  .footer-section-container {
+    padding-top: 40px;
+  }
+
+  .footer {
+    padding: 40px 60px;
+  }
+
+  .footer-list-item {
+    margin-bottom:20px;
+  }
+
+}
+
+
+@media (max-width: 768px) {
+
+  .form-header {
+    gap: 12px;
+  }
+  
+  .login-section {
+    padding: 28px 20px;
+  }
+  
+  .login-form-container {
+    padding: 20px;
+  }
+  
+  .section-container {
+    padding: 34px 30px 0px 30px;
+  }
 
   .header {
-    height: 74px;
+    height: 76px;
     box-shadow: 4px 8px 12px var(--bg-border),
     0px 0px 1px var(--bg-border);
   }
 
   nav {
-    padding: 16px 24px;
-    height: 74px;
+    padding: 12px 30px;
+    height: 76px;
   }
 
   .nav-items a {
@@ -809,36 +916,22 @@ img {
     display: block;
   }
   
-
-  .login-section {
-    padding: 28px 20px;
-  }
-  
-  .login-form-container {
-    padding: 20px;
-  }
-
-  .section-container {
-    padding: 28px 20px 0px 20px;
-    gap: 32px;
-  }
-  
   .hero-image-container {
-    min-height: 400px;
+    min-height: 300px;
   }
   
   .hero-content {
-    padding: 35px 20px;
-    gap: 14px;
+    padding: 40px 35px;
+    gap: 17px;
   }
 
   h1 {
-    font-size: 24px;
+    font-size: 34px;
     line-height: 1.1;
   }
   
   h2 {
-    font-size: 40px;
+    font-size: 50px;
     font-weight: 700;
   }
   
@@ -866,38 +959,31 @@ img {
   }
 
   .body-large-1 {
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 16px;
   }
   
   .body-large-2 {
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 16px;
   }
   
   .body-large-3 {
     font-size: 16px;
-    font-weight: 400;
   }
   
   .body-large-4 {
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 16px;
   }
   
   .body-medium-1 {
     font-size: 14px;
-    font-weight: 700;
   }
   
   .body-medium-2 {
     font-size: 14px;
-    font-weight: 400;
   }
   
   .body-medium-3 {
     font-size: 14px;
-    font-weight: 400;
   }
   
   .body-medium-4 {
@@ -907,12 +993,10 @@ img {
   
   .body-small-1 {
     font-size: 12px;
-    font-weight: 700;
   }
   
   .body-small-2 {
     font-size: 12px;
-    font-weight: 400;
   }
 
   .btn-primary-1 {
@@ -1016,17 +1100,13 @@ img {
   .collection-card-header p {
     display: none;
   }
-  
-  .card-user-info p span {
-    display: none;
-  }
 
   .price {
     font-size: 20px;
   }
   
   .cta-image-container {
-    min-height: 400px;
+    min-height: 350px;
   }
   
   .cta-content {
@@ -1069,13 +1149,17 @@ img {
   }
 
   .footer-section-container {
-    padding-top: 28px;
+    padding-top: 34px;
   }
   
   .footer {
-    width: 100%;
     height: 400px;
-    padding: 28px 20px;
+    padding: 30px;
+  }
+  
+  .footer-logo {
+    width: 162px;
+    height: 25px;
   }
 
   .footer-content {
@@ -1083,11 +1167,6 @@ img {
     flex-direction: column;
     height: auto;
     gap: 0px;
-  }
-  
-  .footer-logo {
-    width: 170px;
-    height: 36px;
   }
 
   .footer-header p {
@@ -1138,5 +1217,126 @@ img {
 
   .footer-icons {
     gap: 15px;
+  }
+}
+
+
+@media (max-width: 480px) {
+
+  .header {
+    height: 74px;
+    box-shadow: 4px 8px 12px var(--bg-border),
+    0px 0px 1px var(--bg-border);
+  }
+
+  nav {
+    padding: 16px 24px;
+    height: 74px;
+  }
+
+  .nav-items a {
+    display: none;
+  }
+
+  .logo {
+    width: 144px; 
+  }
+  
+  .nav-avatar {
+    display: none;
+  }
+
+  .ham-menu {
+    display: block;
+  }
+  
+
+  .login-section {
+    padding: 28px 20px;
+  }
+  
+  .login-form-container {
+    padding: 20px;
+  }
+
+  .section-container {
+    padding: 28px 20px 0px 20px;
+    gap: 32px;
+  }
+  
+  .hero-image-container {
+    min-height: 200px;
+  }
+  
+  .hero-content {
+    padding: 35px 20px;
+    gap: 14px;
+  }
+
+  h1 {
+    font-size: 30px;
+    line-height: 1.1;
+  }
+
+  .body-large-1 {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  
+  .body-large-2 {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  
+  .body-large-3 {
+    font-size: 16px;
+    font-weight: 400;
+  }
+  
+  .body-large-4 {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  .body-medium-1 {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  .body-medium-2 {
+    font-size: 14px;
+  }
+  
+  .body-medium-3 {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  
+  .body-medium-4 {
+    font-size: 16px;
+    font-weight: 700;
+  }
+  
+  .body-small-1 {
+    font-size: 12px;
+    font-weight: 700;
+  }
+  
+  .body-small-2 {
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  .card-user-info p span {
+    display: none;
+  }
+
+  .footer-section-container {
+    padding-top: 28px;
+  }
+
+  .footer {
+    height: 365px;
+    padding: 20px;
   }
 }
