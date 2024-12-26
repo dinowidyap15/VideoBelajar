@@ -40,10 +40,10 @@ const CollectionsPage = () => {
         <div className="grid xl:grid-cols-3 md:grid-cols-2 w-full md:gap-8 gap-4">
           {card.map((user) => (
             <div className="overflow-hidden border border-bg-border rounded-xl bg-white flex flex-col items-start relative p-4 gap-4">
-              <div className="flex flex-row gap-3 md:flex-col">
+              <div className="flex flex-row gap-5 md:flex-col">
                 <img src={user.thumbnail} alt="collection video" className="w-20 h-20 md:w-auto md:h-auto md:rounded-xl object-cover rounded-lg md:object-contain" />
                 <div className="flex flex-col md:flex-col justify-between">
-                  <div className="flex flex-col gap-1 md:mb-4 mb-0">
+                  <div className="flex flex-col md:mb-4 mb-0 gap-2">
                     <h5 className="font-poppins font-regular md:text-lg text-md leading-[1.1]">{user.title}</h5>
                     <p className="font-lato font-bold text-dark-2 md:block hidden">{user.desc}</p>
                   </div>
