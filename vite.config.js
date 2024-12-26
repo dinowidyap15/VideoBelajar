@@ -5,14 +5,14 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: "dist", // Output untuk build
+    outDir: "dist",
   },
   server: {
-    port: 3000, // Port lokal untuk development
+    port: 3000,
   },
   resolve: {
     alias: {
-      "@": "/src", // Alias untuk folder src
+      "@": "/src",
     },
   },
 });
