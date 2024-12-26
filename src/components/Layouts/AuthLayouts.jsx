@@ -44,9 +44,9 @@ const AuthLayouts = (props) => {
             </Button>
           </div>
           <div className="flex items-center gap-2 mb-6 mt-5">
-            <span className="flex-1 h-px mt-1 bg-bg-border"></span>
+            <span className="flex-1 h-px bg-bg-border"></span>
             <span className="font-lato text-gr-800 sm:text-md text-sm">atau</span>
-            <span className="flex-1 h-px mt-1 bg-bg-border"></span>
+            <span className="flex-1 h-px bg-bg-border"></span>
           </div>
 
           <button
