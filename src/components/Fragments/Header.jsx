@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "../Elements/SVG/logo";
 
-const Nav = () => {
+const Header = () => {
   return (
     <div
       className="relative flex items-center justify-between py-3 xl:px-32 lg:px-20 md:px-16 md:h-[80px] 
@@ -26,4 +26,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default Header;

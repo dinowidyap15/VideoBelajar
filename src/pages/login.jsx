@@ -1,16 +1,16 @@
 import React from "react";
 import AuthLayouts from "../components/Layouts/AuthLayouts";
 import FormLogin from "../components/Fragments/FormLogin";
-import Nav from "../components/Fragments/Nav";
+import Header from "../components/Fragments/Header";
 
 const LoginPage = () => {
   return (
-    <>
-      <Nav />
+    <main className="overflow-hidden">
+      <Header />
       <AuthLayouts title="Masuk ke Akun" desc="Yuk, lanjutin belajarmu di videobelajar." type="login">
         <FormLogin />
       </AuthLayouts>
-    </>
+    </main>
   );
 };
 

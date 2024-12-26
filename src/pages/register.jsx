@@ -1,16 +1,16 @@
 import React from "react";
 import AuthLayouts from "../components/Layouts/AuthLayouts";
 import FormRegister from "../components/Fragments/FormRegister";
-import Nav from "../components/Fragments/Nav";
+import Header from "../components/Fragments/Header";
 
 const RegisterPage = () => {
   return (
-    <>
-      <Nav />
+    <main className="overflow-hidden">
+      <Header />
       <AuthLayouts title="Pendaftaran Akun" desc="Yuk, daftarkan akunmu sekarang juga!" type="register">
         <FormRegister />
       </AuthLayouts>
-    </>
+    </main>
   );
 };
 

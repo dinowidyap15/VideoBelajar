@@ -1,19 +1,19 @@
 import React from "react";
 import Hero from "../components/Fragments/Hero";
-import Nav from "../components/Fragments/Nav";
 import CollectionsPage from "../components/Fragments/Collections";
 import NewsletterPage from "../components/Fragments/Newsletter";
 import Footer from "../components/Fragments/Footer";
+import Header from "../components/Fragments/Header";
 
 const HomePage = () => {
   return (
-    <>
-      <Nav />
+    <main className="overflow-hidden">
+      <Header />
       <Hero />
       <CollectionsPage />
       <NewsletterPage />
       <Footer />
-    </>
+    </main>
   );
 };
 
