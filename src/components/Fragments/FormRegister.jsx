@@ -14,7 +14,7 @@ const FormRegister = () => {
         <select
           id="gender"
           name="gender"
-          className="font-lato !sm:text-md text-sm w-full mt-2 h-12 px-4 border border-bg-border rounded-lg
+          className="font-lato !sm:text-md w-full mt-2 h-12 px-4 border border-bg-border rounded-lg
      text-dark-1 focus:outline-none focus:ring-1 focus:ring-gr-300 appearance-none"
         >
           <option value="wanita">Wanita</option>
@@ -33,7 +33,7 @@ const FormRegister = () => {
           <select
             id="country"
             name="country"
-            className="font-lato !sm:text-md text-sm w-1/3 mt-2 h-12 px-4 border border-bg-border rounded-lg
+            className="font-lato !sm:text-md w-1/3 mt-2 h-12 px-4 border border-bg-border rounded-lg
       text-dark-1 focus:outline-none focus:ring-1 focus:ring-gr-300 appearance-none"
           >
             <option value="ID">+62</option>
