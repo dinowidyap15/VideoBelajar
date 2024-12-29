@@ -2,7 +2,7 @@ import React from "react";
 
 const Button = (props) => {
   const { variant, 
-    type, 
+    btn = "button",
     children, 
     onClick, 
     className, 
@@ -30,7 +30,11 @@ const Button = (props) => {
   const classes = `${baseClass} ${variants[variant][type - 1]} ${disabled ? "opacity-50 cursor-not-allowed" : ""} ${className}`;
 
   return (
-    <button className={classes} onClick={onClick} disabled={disabled}>
+    <button 
+      type={btn}
+      className={classes} 
+      onClick={onClick} 
+      disabled={disabled}>
       {children}
     </button>
   );
