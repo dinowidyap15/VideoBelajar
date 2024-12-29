@@ -50,6 +50,14 @@ const FormRegister = () => {
 
       <InputForm label="Kata Sandi" type="password" name="password" />
       <InputForm label="Konfirmasi Kata Sandi" type="password" name="confirmPassword" />
+      <Button variant="primary" margin="mt-4" btn={1} type="submit">
+          Daftar
+        </Button>
+        <Link to="/login">
+          <Button variant="primary" margin="mt-4" btn={2}>
+            Masuk
+          </Button>
+        </Link>
     </form>
   );
 };
