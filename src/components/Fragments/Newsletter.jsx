@@ -27,11 +27,11 @@ const NewsletterPage = () => {
               className="font-lato md:text-start 
             text-center md:text-md text-sm md:h-auto h-5 w-full border-0 outline-none placeholder:text-dark-2"
             />
-            <Button variant="secondary" type={1} width={1 / 2} display="hidden md:inline-block">
+            <Button variant="secondary" btn={1} width={1 / 2} display="hidden md:inline-block">
               Subscribe
             </Button>
           </div>
-          <Button variant="secondary" type={1} height="h-9" display="md:hidden inline-block">
+          <Button variant="secondary" btn={1} height="h-9" display="md:hidden inline-block">
             Subscribe
           </Button>
         </div>
