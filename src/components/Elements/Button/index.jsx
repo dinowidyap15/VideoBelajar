@@ -27,7 +27,7 @@ const Button = (props) => {
     ],
   };
 
-  const classes = `${baseClass} ${variants[variant][type - 1]} ${disabled ? "opacity-50 cursor-not-allowed" : ""} ${className}`;
+  const classes = `${baseClass} ${variants[variant][btn - 1]} ${disabled ? "opacity-50 cursor-not-allowed" : ""} ${className}`;
 
   return (
     <button 
