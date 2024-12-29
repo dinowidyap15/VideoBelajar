@@ -2,6 +2,7 @@ import React from "react";
 import InputForm from "../Elements/Input";
 import DropdownArrow from "../Elements/SVG/arrow";
 import Button from "../Elements/Button";
+import { Link } from "react-router-dom";
 
 const FormRegister = () => {
   return (
