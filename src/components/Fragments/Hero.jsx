@@ -23,7 +23,7 @@ const Hero = () => {
               Temukan ilmu baru yang menarik dan mendalam melalui koleksi video pembelajaran berkualitas tinggi. Tidak hanya itu, <br />
               Anda juga dapat berpartisipasi dalam latihan interaktif yang akan meningkatkan pemahaman Anda.
             </p>
-            <Button variant="primary" type={1} width={1 / 2}>
+            <Button variant="primary" btn={1} width={1 / 2}>
               Temukan Video Course!
             </Button>
           </div>
