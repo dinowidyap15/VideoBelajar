@@ -6,7 +6,11 @@ import Header from "../components/Fragments/Header";
 const RegisterPage = () => {
   return (
     <main className="overflow-hidden">
-      <Header />
+      <Header 
+        showCategory={false} 
+        showAvatar={false} 
+        showButton={false} 
+        showHamMenu={false}/>
       <AuthLayouts title="Pendaftaran Akun" desc="Yuk, daftarkan akunmu sekarang juga!" type="register">
         <FormRegister />
       </AuthLayouts>

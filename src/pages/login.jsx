@@ -6,7 +6,11 @@ import Header from "../components/Fragments/Header";
 const LoginPage = () => {
   return (
     <main className="overflow-hidden">
-      <Header />
+      <Header 
+        showCategory={false} 
+        showAvatar={false} 
+        showButton={false} 
+        showHamMenu={false} />
       <AuthLayouts title="Masuk ke Akun" desc="Yuk, lanjutin belajarmu di videobelajar." type="login">
         <FormLogin />
       </AuthLayouts>

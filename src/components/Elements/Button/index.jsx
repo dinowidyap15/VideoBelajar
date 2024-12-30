@@ -2,17 +2,18 @@ import React from "react";
 
 const Button = (props) => {
   const { variant, 
-    type, 
+    btn = "button",
     children, 
-    onClick, 
+    onClick = () => {},
     className, 
     disabled = false,
+    margin = 'mt-0',
     display = 'inline-block',
     height = 'md:h-11 h-9',
     width = 'w-full' } = props;
 
   const baseClass = `font-lato font-semibold border-2 transition duration-400 ${height} 
-  md:px-6 px-2 md:text-md text-sm rounded-lg ${display} cursor-pointer ${width}`;
+  md:px-6 px-2 md:text-md text-sm ${margin} rounded-lg ${display} cursor-pointer ${width}`;
 
   const variants = {
     primary: [
@@ -27,11 +28,15 @@ const Button = (props) => {
     ],
   };
 
-  const classes = `${baseClass} ${variants[variant][type - 1]} ${disabled ? "opacity-50 cursor-not-allowed" : ""} ${className}`;
+  const classes = `${baseClass} ${variants[variant][btn - 1]} ${disabled ? "opacity-50 cursor-not-allowed" : ""} ${className}`;
 
   return (
-    <button className={classes} onClick={onClick} disabled={disabled}>
-      {children}
+    <button 
+      className={classes} 
+      type={btn}
+      onClick={onClick} 
+      disabled={disabled}>
+        {children}
     </button>
   );
 };

@@ -1,14 +1,12 @@
 import React from "react";
-import Button from "../Elements/Button";
-import { Link } from "react-router-dom";
 
 const AuthLayouts = (props) => {
   const { children, title, desc, type } = props;
   return (
-    <>
+    <div>
       <section
-        className="flex max-w-full min-h-screen mx-auto xl:pt-16 lg:pt-14 md:pt-12 pt-8 xl:px-32 lg:px-20 md:px-16 px-6 gap-8
-     bg-bg-main xl:pb-16 lg:pb-14 md:pb-12 pb-8 justify-center"
+        className="flex max-w-full min-h-screen mx-auto xl:pt-16 lg:pt-14 md:pt-12 pt-20 xl:px-32 lg:px-20 md:px-16 px-6 gap-8
+     bg-bg-main xl:pb-16 lg:pb-14 md:pb-12 pb-20 justify-center"
       >
         <div className="relative w-full max-w-xl bg-white rounded-md sm:p-9 p-5 border border-bg-border">
           <div className="flex flex-col items-center text-center">
@@ -16,33 +14,7 @@ const AuthLayouts = (props) => {
             <p className="font-lato sm:text-md text-sm text-dark-2">{desc}</p>
           </div>
           {children}
-          <p className="font-lato sm:text-md text-sm text-gr-700 mt-3">
-            {type === "login" ? "Belum punya akun? " : "Sudah punya akun? "}
 
-            {type === "login" && (
-              <Link to="/register" className="font-bold text-primary-400 hover:underline">
-                Daftar
-              </Link>
-            )}
-            {type === "register" && (
-              <Link to="/login" className="font-bold text-primary-400 hover:underline">
-                Masuk
-              </Link>
-            )}
-          </p>
-          <div className="flex justify-end mb-6">
-            <a href="#" class="font-lato text-gr-700 sm:text-md text-sm hover:underline">
-              Lupa Password?
-            </a>
-          </div>
-          <div className="space-y-4">
-            <Button variant="primary" type={1}>
-              Masuk
-            </Button>
-            <Button variant="primary" type={2}>
-              Daftar
-            </Button>
-          </div>
           <div className="flex items-center gap-2 mb-6 mt-5">
             <span className="flex-1 h-px bg-bg-border"></span>
             <span className="font-lato text-gr-800 sm:text-md text-sm">atau</span>
@@ -51,7 +23,7 @@ const AuthLayouts = (props) => {
 
           <button
             className="w-full flex items-center justify-center gap-3 border border-gr-300 hover:bg-gr-100 
-          transition duration-400 md:h-11 h-9 md:px-6 px-4 md:text-md text-sm rounded-lg cursor-pointer"
+            transition duration-400 md:h-11 h-9 md:px-6 px-4 md:text-md text-sm rounded-lg cursor-pointer"
           >
             <svg className="w-5 h-5" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -75,7 +47,7 @@ const AuthLayouts = (props) => {
           </button>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 
