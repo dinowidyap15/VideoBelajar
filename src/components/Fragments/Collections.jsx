@@ -47,12 +47,12 @@ const Collections = () => {
               {categories.map((category) => (
                 <li
                   key={category}
-                  className={`relative pb-4 ${activeCategory === category ? "text-tertiary-400" : "text-dark-2"}`}
+                  className={`relative pb-4 ${activeCategory === category ? "text-tertiary-400 hover:text-tertiary-500" : "text-dark-2 hover:text-dark-1"}`}
                   onClick={() => setActiveCategory(category)}
                 >
                   <a>{category}</a>
                   {activeCategory === category && (
-                    <span className="absolute bottom-[-6px] left-0 inline-block sm:w-14 w-10 h-1.5 bg-tertiary-400 rounded-lg"></span>
+                    <span className="absolute bottom-[-6px] left-0 inline-block sm:w-14 w-10 h-1.5 bg-tertiary-400 hover:text-tertiary-500 rounded-lg"></span>
                   )}
                 </li>
               ))}

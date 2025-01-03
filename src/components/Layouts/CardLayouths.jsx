@@ -15,8 +15,8 @@ const CardLayouths = ({ card, onEdit, onDelete, showActions = false }) => {
             <h3 className="font-poppins font-regular md:text-lg text-md leading-[1.1]">
               {card.title.substring(0, 30)}...
             </h3>
-            <p className="font-lato font-bold text-dark-2 sm:mt-2 md:block hidden">
-              {card.description.substring(0, 76)}...
+            <p className="font-lato text-dark-2 sm:mt-2 md:block hidden">
+              {card.description.substring(0, 95)}...
             </p>
           </div>
           <div className="flex items-center gap-2 mt-auto">

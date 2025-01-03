@@ -40,4 +40,3 @@ export const loginUser = (credentials, callback) => {
 export const logoutUser = () => {
   localStorage.removeItem("user");
 };
-

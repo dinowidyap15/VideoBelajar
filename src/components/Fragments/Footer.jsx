@@ -52,7 +52,7 @@ const Footer = () => {
                 <div key={index} className="leading-[1.1]">
                   <p className="text-md font-bold mb-4">{section.title}</p>
                   {section.items.map((item, idx) => (
-                    <LinkScroll key={idx} to={item.href} smooth={true} duration={10} className="text-md text-dark-2 mb-4 block cursor-pointer">
+                    <LinkScroll key={idx} to={item.href} smooth={true} duration={10} className="text-md text-dark-2 hover:text-dark-1 mb-4 block cursor-pointer">
                       {item.text}
                     </LinkScroll>
                   ))}
