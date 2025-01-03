@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import InputForm from "../Elements/Input";
 import Button from "../Elements/Button";
-import { Link } from "react-router-dom";
-import EyeIcon from "../Elements/SVG/eye";
+import { Link as RouterLink } from "react-router-dom";
+import OffEyeIcon from "../Elements/SVG/offeye";
+import OnEyeIcon from "../Elements/SVG/oneye";
 
 const FormLogin = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,8 @@ const FormLogin = () => {
 
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+  const [alertType, setAlertType] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,31 +23,32 @@ const FormLogin = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     setError("");
-
+  
     if (!formData.email || !formData.password) {
       setError("Email dan password harus diisi!");
       return;
     }
-
-    const storedUser = localStorage.getItem(formData.email);
-    if (!storedUser) {
-      setError("Email tidak terdaftar! Silahkan daftar.");
+  
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailRegex.test(formData.email)) {
+      setError("Format email tidak valid!");
       return;
     }
 
-    const userData = JSON.parse(storedUser);
+    const storedUser = JSON.parse(localStorage.getItem("user"));
 
-    if (userData.password !== formData.password) {
-      setError("Kata sandi salah!");
-      return;
+    if (storedUser && storedUser.email === formData.email && storedUser.password === formData.password) {
+      localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("email", formData.email);
+      
+      setAlertMessage("Login berhasil!");
+      setAlertType("success");
+      setTimeout(() => window.location.href = "/home", 3000);
+    } else {
+      setError("Email atau password salah.");
     }
-
-    localStorage.setItem("isLoggedIn", "true");
-    localStorage.setItem("email", formData.email);
-
-    alert("Login berhasil!");
-    window.location.href = "/home";
   };
+  
 
   return (
     <form onSubmit={handleLogin} className="mt-8">
@@ -70,30 +74,27 @@ const FormLogin = () => {
           onClick={() => setShowPassword(!showPassword)}
           className="absolute inset-y-0 right-2 pt-7 flex items-center cursor-pointer"
         >
-          <EyeIcon />
+          {showPassword ? <OnEyeIcon /> : <OffEyeIcon />}
         </button>
       </div>
-
       {error && <p className="text-red-500 text-sm my-4">{error}</p>}
-
-      <div className="flex justify-end">
-        <a
-          href="#"
-          className="font-lato text-gr-700 sm:text-md text-sm hover:underline"
+      
+      {alertMessage && (
+        <div
+          className={`alert ${alertType === "success" ? "bg-success-default" : "bg-error-default"} flex justify-center gap-4 p-3 rounded-xl text-white mb-4`}
         >
-          Lupa Password?
-        </a>
-      </div>
+          {alertMessage}
+        </div>
+      )}
 
       <Button variant="primary" margin="mt-4" btn={1} type="submit">
         Masuk
       </Button>
-
-      <Link to="/register">
+      <RouterLink to="/register">
         <Button variant="primary" margin="mt-4" btn={2}>
           Daftar
         </Button>
-      </Link>
+      </RouterLink>
     </form>
   );
 };

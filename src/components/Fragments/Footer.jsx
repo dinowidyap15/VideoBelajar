@@ -30,7 +30,7 @@ const Footer = () => {
                 <div key={index} className="mb-4">
                   <div className="flex justify-between text-md font-bold cursor-pointer" onClick={() => toggleSection(index)}>
                     {section.title}
-                    <span>{openSections[index] ? <DropdownArrow /> : <DropdownArrow direction="right" />}</span>
+                    <span>{openSections[index] ? <DropdownArrow colorClass="text-dark-3" /> : <DropdownArrow colorClass="text-dark-3" direction="right" />}</span>
                   </div>
 
                   {openSections[index] && (

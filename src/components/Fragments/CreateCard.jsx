@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import Button from "../Elements/Button";
 import InputForm from "../Elements/Input";
+import { postCard } from "../../services/cards.service";
 
-const CreateCardPage = ({ addCard, editCard, updateCard, cancelEdit }) => {
+const CreateCard = ({ addCard, editCard, updateCard, cancelEdit }) => {
   const initialFormState = {
     id: "",
     thumbnail: "",
@@ -44,7 +45,10 @@ const CreateCardPage = ({ addCard, editCard, updateCard, cancelEdit }) => {
       updateCard(formData);
     } else {
       const cardWithId = { ...formData, id: Date.now() };
-      addCard(cardWithId);
+
+      postCard(cardWithId, (newCard) => {
+        addCard(newCard);
+      });
     }
 
     setFormData(initialFormState);
@@ -98,19 +102,10 @@ const CreateCardPage = ({ addCard, editCard, updateCard, cancelEdit }) => {
           {error && <p className="text-tertiary-400 text-start my-2">{error}</p>}
 
           <div className="flex justify-between gap-4 mt-4">
-            <Button 
-              variant="primary" 
-              onClick={handleCancel} 
-              btn={3} 
-              type="button"
-            >
+            <Button variant="primary" onClick={handleCancel} btn={3} type="button">
               Batal
             </Button>
-            <Button 
-              variant="primary" 
-              btn={1} 
-              type="submit"
-            >
+            <Button variant="primary" btn={1} type="submit">
               {editCard ? "Update Kelas" : "Tambah Kelas"}
             </Button>
           </div>
@@ -120,4 +115,4 @@ const CreateCardPage = ({ addCard, editCard, updateCard, cancelEdit }) => {
   );
 };
 
-export default CreateCardPage;
+export default CreateCard;

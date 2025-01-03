@@ -1,16 +1,18 @@
 import React, { useState } from "react";
+import { registerUser } from "../../services/auth.service";
 import InputForm from "../Elements/Input";
 import DropdownArrow from "../Elements/SVG/arrow";
 import Button from "../Elements/Button";
-import { Link } from "react-router-dom";
-import EyeIcon from "../Elements/SVG/eye";
+import { Link as RouterLink } from "react-router-dom";
+import OffEyeIcon from "../Elements/SVG/offeye";
+import OnEyeIcon from "../Elements/SVG/oneye";
 
 const FormRegister = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     gender: "",
-    country: "ID",
+    country: "",
     phone: "",
     password: "",
     confirmPassword: "",
@@ -19,6 +21,8 @@ const FormRegister = () => {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+  const [alertType, setAlertType] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,8 +32,8 @@ const FormRegister = () => {
     e.preventDefault();
     setError("");
 
-    if (!formData.fullName || !formData.email || !formData.gender || !formData.password || !formData.confirmPassword) {
-      setError("Semua field harus diisi!");
+    if (!formData.fullName || !formData.email || !formData.gender || !formData.phone || !formData.password || !formData.confirmPassword) {
+      setError("Semua kolom harus diisi!");
       return;
     }
 
@@ -39,22 +43,17 @@ const FormRegister = () => {
       return;
     }
 
+    const phoneRegex = /^[0-9]{9,15}$/;
+    if (!phoneRegex.test(formData.phone)) {
+      setError("Nomor telepon tidak valid!");
+      return;
+    }
+
     if (formData.password !== formData.confirmPassword) {
       setError("Password dan konfirmasi password tidak cocok!");
       return;
     } else if (formData.password.length < 6) {
-      setError("Password harus lebih dari 6 karakter!");
-      return;
-    }
-
-    if (!formData.phone || formData.phone.length < 10) {
-      setError("Nomor telepon harus terdiri minimal 10 digit!");
-      return;
-    }
-
-    const existingUser = localStorage.getItem(formData.email);
-    if (existingUser) {
-      setError("Email sudah terdaftar! Silahkan login.");
+      setError("Password minimal harus terdiri dari 6 karakter!");
       return;
     }
 
@@ -66,14 +65,24 @@ const FormRegister = () => {
       password: formData.password,
     };
 
-    localStorage.setItem(formData.email, JSON.stringify(userData));
-    alert("Pendaftaran berhasil! Silahkan login.");
+    localStorage.setItem("user", JSON.stringify(userData)); 
+
+    registerUser(userData, (response) => {
+      if (response) {
+        setAlertMessage("Pendaftaran berhasil! Silahkan login.");
+        setAlertType("success");
+        setTimeout(() => window.location.href = "/login", 2000);
+      } else {
+        setAlertMessage("Terjadi kesalahan saat mendaftar. Coba lagi!");
+        setAlertType("error");
+      }
+    });
   };
 
   return (
     <>
-      <form onSubmit={handleRegister} className="mt-8">
-        <InputForm
+    <form onSubmit={handleRegister} className="mt-8">
+      <InputForm
           label="Nama Lengkap"
           type="text"
           name="fullName"
@@ -105,7 +114,7 @@ const FormRegister = () => {
             <option value="pria">Pria</option>
           </select>
           <div className="absolute inset-y-0 right-2 pt-7 flex items-center pointer-events-none">
-            <DropdownArrow />
+            <DropdownArrow colorClass="text-dark-2"/>
           </div>
         </div>
 
@@ -126,7 +135,7 @@ const FormRegister = () => {
                 <option value="US">+1</option>
               </select>
               <div className="absolute inset-y-0 right-2 pt-2 flex items-center pointer-events-none">
-                <DropdownArrow />
+                <DropdownArrow colorClass="text-dark-2"/>
               </div>
             </div>
             <input
@@ -153,7 +162,7 @@ const FormRegister = () => {
             onClick={() => setShowPassword(!showPassword)}
             className="absolute inset-y-0 right-2 pt-7 flex items-center cursor-pointer"
           >
-            <EyeIcon />
+            {showPassword ? <OnEyeIcon /> : <OffEyeIcon />}
           </button>
         </div>
 
@@ -171,22 +180,29 @@ const FormRegister = () => {
             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
             className="absolute inset-y-0 right-2 pt-7 flex items-center cursor-pointer"
           >
-            <EyeIcon />
+            {showConfirmPassword ? <OnEyeIcon /> : <OffEyeIcon />}
           </button>
         </div>
 
-        {error && <p className="text-tertiary-400 text-start my-4">{error}</p>}
+      {error && <p className="text-error-default text-start my-4">{error}</p>}
 
-        <Button variant="primary" margin="mt-4" btn={1} type="submit">
-          Daftar
+      {alertMessage && (
+        <div
+          className={`alert ${alertType === "success" ? "bg-success-default" : "bg-error-default"} flex justify-center gap-4 p-3 rounded-xl text-white mb-4`}
+        >
+          {alertMessage}
+        </div>
+      )}
+
+      <Button variant="primary" margin="mt-4" btn={1} type="submit">
+        Daftar
+      </Button>
+      <RouterLink to="/login">
+        <Button variant="primary" margin="mt-4" btn={2}>
+          Masuk
         </Button>
-
-        <Link to="/login">
-          <Button variant="primary" margin="mt-4" btn={2}>
-            Masuk
-          </Button>
-        </Link>
-      </form>
+      </RouterLink>
+    </form>
     </>
   );
 };

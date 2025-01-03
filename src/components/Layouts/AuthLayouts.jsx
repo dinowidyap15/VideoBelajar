@@ -1,7 +1,7 @@
 import React from "react";
 
 const AuthLayouts = (props) => {
-  const { children, title, desc, type } = props;
+  const { children, title, desc } = props;
   return (
     <div>
       <section
@@ -14,7 +14,6 @@ const AuthLayouts = (props) => {
             <p className="font-lato sm:text-md text-sm text-dark-2">{desc}</p>
           </div>
           {children}
-
           <div className="flex items-center gap-2 mb-6 mt-5">
             <span className="flex-1 h-px bg-bg-border"></span>
             <span className="font-lato text-gr-800 sm:text-md text-sm">atau</span>

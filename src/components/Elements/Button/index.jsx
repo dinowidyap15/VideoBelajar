@@ -7,13 +7,14 @@ const Button = (props) => {
     onClick = () => {},
     className, 
     disabled = false,
+    size = 'text-sm',
     margin = 'mt-0',
     display = 'inline-block',
     height = 'md:h-11 h-9',
     width = 'w-full' } = props;
 
   const baseClass = `font-lato font-semibold border-2 transition duration-400 ${height} 
-  md:px-6 px-2 md:text-md text-sm ${margin} rounded-lg ${display} cursor-pointer ${width}`;
+  md:px-6 px-2 md:text-md ${size} ${margin} rounded-xl ${display} cursor-pointer ${width} z-10`;
 
   const variants = {
     primary: [
@@ -40,5 +41,6 @@ const Button = (props) => {
     </button>
   );
 };
+
 
 export default Button;

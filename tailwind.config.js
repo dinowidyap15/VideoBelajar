@@ -43,6 +43,36 @@ export default {
           400: "#F64920",
           500: "#e23d1a",
         },
+        info: {
+          bg: "#EBF9FE",
+          default: "#0980E2",
+          hover: "#0663C2",
+          pressed: "#044AA2",
+        },
+        success: {
+          bg: "#E0FDDF",
+          default: "#38D189",
+          hover: "#28B380",
+          pressed: "#1C9675",
+        },
+        warning: {
+          bg: "#FCF8CA",
+          default: "#FCE91B",
+          hover: "#D8C613",
+          pressed: "#B5A40D",
+        },
+        error: {
+          bg: "#FCE3D1",
+          default: "#FF5C2B",
+          hover: "#DB3D1F",
+          pressed: "#B72315",
+        },
+        backgroundImage: {
+          'info-gradient': 'linear-gradient(to right, #6F9EFF, #004CE8)',
+          'success-gradient': 'linear-gradient(to right, #73FFA6, #00C247)',
+          'warning-gradient': 'linear-gradient(to right, #FFE58036, #FFE16A)',
+          'error-gradient': 'linear-gradient(to right, #FF8A9B, #FF3333)',
+        },
         light: {
           1: "#ffffff",
           2: "#c1c2c4",
@@ -53,7 +83,6 @@ export default {
           2: "rgba(51, 51, 51, 0.68)",
           3: "rgba(58, 53, 65, 0.38)",
         },
-
         bg: {
           main: "#fffdf3",
           base: "#f4f5fa",
