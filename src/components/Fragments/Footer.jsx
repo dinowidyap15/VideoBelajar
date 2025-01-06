@@ -1,7 +1,7 @@
 import { footerLinks } from "../../constants";
 import React, { useState } from "react";
-import DropdownArrow from "../Elements/SVG/arrow";
-import Logo from "../Elements/SVG/logo";
+import { DropdownArrow } from "../Elements/SVG";
+import { Logo } from "../Elements/SVG";
 import { Link as LinkScroll } from "react-scroll";
 
 const Footer = () => {

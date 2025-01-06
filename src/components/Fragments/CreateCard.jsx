@@ -1,9 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../Elements/Button";
 import InputForm from "../Elements/Input";
-import { postCard } from "../../services/cards.service";
+import { addCard, updateCard } from "../../redux/slices/createCardSlice";
 
-const CreateCard = ({ addCard, editCard, updateCard, cancelEdit }) => {
+const CreateCard = ({ editCard, cancelEdit }) => {
+  const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.cards);
+  const formRef = useRef(null);
+
   const initialFormState = {
     id: "",
     thumbnail: "",
@@ -18,12 +23,11 @@ const CreateCard = ({ addCard, editCard, updateCard, cancelEdit }) => {
   };
 
   const [formData, setFormData] = useState(initialFormState);
-  const [error, setError] = useState("");
-  const formRef = useRef(null);
+  const [invalid, setinvalid] = useState("");
 
   useEffect(() => {
     if (editCard) {
-      setFormData(editCard);
+      setFormData({ ...initialFormState, ...editCard });
       formRef.current?.scrollIntoView({ behavior: "smooth" });
     } else {
       setFormData(initialFormState);
@@ -37,28 +41,24 @@ const CreateCard = ({ addCard, editCard, updateCard, cancelEdit }) => {
     const isFormValid = requiredFields.every((field) => formData[field]?.trim());
 
     if (!isFormValid) {
-      setError("Harap isi semua kolom yang diperlukan!");
+      setinvalid("Harap isi semua kolom yang diperlukan!");
       return;
     }
 
     if (editCard) {
-      updateCard(formData);
+      dispatch(updateCard(formData));
     } else {
-      const cardWithId = { ...formData, id: Date.now() };
-
-      postCard(cardWithId, (newCard) => {
-        addCard(newCard);
-      });
+      dispatch(addCard({ ...formData, id: Date.now() }));
     }
 
     setFormData(initialFormState);
-    setError("");
+    if (cancelEdit) cancelEdit();
   };
 
   const handleCancel = (e) => {
     e.preventDefault();
-    e.stopPropagation();
-    editCard ? cancelEdit() : setFormData(initialFormState);
+    if (cancelEdit) cancelEdit();
+    else setFormData(initialFormState);
   };
 
   return (
@@ -73,10 +73,9 @@ const CreateCard = ({ addCard, editCard, updateCard, cancelEdit }) => {
                 label={field}
                 id={field}
                 type="text"
-                value={formData[field]}
-                onChange={(e) => setFormData({ ...formData, [field]: e.target.value })}
-                className="mt-1 w-full h-10 px-4 border border-bg-border rounded-lg text-dark-1 
-                focus:outline-none focus:ring-1 focus:ring-gr-300"
+                value={formData[field] || ""}
+                onChange={(e) => setFormData((prev) => ({ ...prev, [field]: e.target.value }))}
+                className="mt-1 w-full h-10 px-4 border border-bg-border rounded-lg text-dark-1 focus:outline-none focus:ring-1 focus:ring-gr-300"
               />
             </div>
           ))}
@@ -86,8 +85,8 @@ const CreateCard = ({ addCard, editCard, updateCard, cancelEdit }) => {
             </label>
             <select
               id="category"
-              value={formData.category}
-              onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+              value={formData.category || ""}
+              onChange={(e) => setFormData((prev) => ({ ...prev, category: e.target.value }))}
               className="mb-2 font-lato !sm:text-md w-full mt-2 h-12 px-4 border border-bg-border rounded-lg text-dark-1 focus:outline-none focus:ring-1 focus:ring-gr-300 appearance-none"
             >
               <option value="">Pilih Kategori</option>
@@ -99,13 +98,13 @@ const CreateCard = ({ addCard, editCard, updateCard, cancelEdit }) => {
             </select>
           </div>
 
-          {error && <p className="text-tertiary-400 text-start my-2">{error}</p>}
+          {invalid && <p className="text-tertiary-400 text-start my-2">{invalid}</p>}
 
           <div className="flex justify-between gap-4 mt-4">
             <Button variant="primary" onClick={handleCancel} btn={3} type="button">
               Batal
             </Button>
-            <Button variant="primary" btn={1} type="submit">
+            <Button variant="primary" btn={1} type="submit" disabled={loading}>
               {editCard ? "Update Kelas" : "Tambah Kelas"}
             </Button>
           </div>

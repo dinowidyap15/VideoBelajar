@@ -6,7 +6,7 @@ import Footer from "../components/Fragments/Footer";
 const CategoryPage = () => {
   return (
     <main className="overflow-hidden">
-      <Header categoryColor="text-primary-400" categoryHover="hover:text-primary-500"/>
+      <Header categoryColor="text-primary-400" categoryHover="hover:text-primary-500" />
       <Category />
       <Footer />
     </main>

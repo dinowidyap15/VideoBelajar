@@ -1,42 +1,62 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getDetailProduct } from "../../services/cards.service";
-import { getCard } from "../../services/cards.service";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchProductDetail } from "../../redux/slices/detailSlice";
+import { fetchCards } from "../../redux/slices/cardsSlice";
 import CardLayouths from "../Layouts/CardLayouths";
-import { Link as RouterLink } from "react-router-dom";
 import Button from "../Elements/Button";
-import Play from "../Elements/SVG/play";
-import Watch from "../Elements/SVG/watch";
-import DropdownArrow from "../Elements/SVG/arrow";
+import { DropdownArrow } from "../Elements/SVG";
+import { Link as RouterLink } from "react-router-dom";
+import TutorLayouts from "../Layouts/TutorLayouts";
+import DurationLayouts from "../Layouts/DurationLayouts";
 
 const DetailProduct = () => {
   const { id } = useParams();
-  const [product, setProduct] = useState(null);
-  const [cards, setCards] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
+  const { product, loading, error } = useSelector((state) => state.detail);
+  const { cards } = useSelector((state) => state.cards);
+  const [isOpen, setIsOpen] = useState([false, false, false, false]);
 
   useEffect(() => {
-    getDetailProduct(id, (data) => {
-      setProduct(data);
-    });
+    dispatch(fetchProductDetail(id));
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [id]);
+  }, [dispatch, id]);
 
   useEffect(() => {
-    getCard((data) => {
-      setCards(data);
-    });
-  }, []);
+    if (cards.length === 0) {
+      dispatch(fetchCards());
+    }
+  }, [dispatch, cards]);
 
-  if (!product) {
-    return <p></p>;
-  }
+  const displayedCards = Array.isArray(cards) ? cards.slice(0, 3) : [];
 
-  const toggleSection = () => {
-    setIsOpen((prev) => !prev);
+  const toggleSection = (index) => {
+    setIsOpen((prevState) => prevState.map((state, i) => (i === index ? !state : state)));
   };
 
-  const displayedCards = cards.slice(0, 3);
+  if (loading) {
+    return (
+      <section className="flex max-w-full mx-auto xl:pt-16 lg:pt-14 md:pt-12 pt-8 xl:px-32 lg:px-20 md:px-16 px-6 gap-8 bg-bg-main">
+        <h3 className="font-poppins font-semibold md:text-xl text-1g">Loading...</h3>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="flex max-w-full mx-auto xl:pt-16 lg:pt-14 md:pt-12 pt-8 xl:px-32 lg:px-20 md:px-16 px-6 gap-8 bg-bg-main">
+        <h3 className="font-poppins font-semibold md:text-xl text-1g text-error-default">{error}</h3>
+      </section>
+    );
+  }
+
+  if (!product) {
+    return (
+      <section className="flex max-w-full mx-auto xl:pt-16 lg:pt-14 md:pt-12 pt-8 xl:px-32 lg:px-20 md:px-16 px-6 gap-8 bg-bg-main">
+        <h3 className="font-poppins font-semibold md:text-xl text-1g text-error-default">No product found.</h3>
+      </section>
+    );
+  }
 
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
@@ -158,180 +178,58 @@ const DetailProduct = () => {
             <div className="col-span-1 md:col-span-2 w-full flex flex-col gap-4 border border-bg-border rounded-xl bg-white p-4">
               <h3 className="font-poppins font-semibold md:text-lg text-md text-dark-1">Belajar bersama Tutor Profesional</h3>
               <div className="flex md:flex-row flex-col justify-between gap-4">
-                <div className="overflow-hidden w-full border border-bg-border rounded-xl bg-white flex flex-col items-start relative p-4 gap-3">
-                  <div className="flex items-center gap-2 mt-auto">
-                    <div className="w-10 h-10 overflow-hidden">
-                      <img src="/avatar/ava1.png" alt="avatar" />
-                    </div>
-                    <div className="flex flex-col justify-between">
-                      <h4 className="font-lato font-bold text-dark-1 md:text-md text-sm">Gregorius Edrik Lawanto</h4>
-                      <p className="font-lato font-regular text-dark-2 md:text-sm text-xs">
-                        Senior Talent Acquisition <span className="hidden sm:inline">di</span>
-                        <span className="font-lato font-bold text-dark-2 sm:text-sm text-xs hidden sm:inline"> WingsGroup</span>
-                      </p>
-                    </div>
-                  </div>
-                  <p className="font-lato text-dark-1 sm:text-md text-sm">
-                    Berkarier di bidang HR selama lebih dari 3 tahun. Saat ini bekerja sebagai Senior Talent Acquisition Specialist di Wings Group Indonesia (Sayap Mas Utama) selama hampir 1 tahun.
-                  </p>
-                </div>
-                <div className="overflow-hidden w-full border border-bg-border rounded-xl bg-white flex flex-col items-start relative p-4 gap-3">
-                  <div className="flex items-center gap-2 mt-auto">
-                    <div className="w-10 h-10 overflow-hidden">
-                      <img src="/avatar/ava3.png" alt="avatar" />
-                    </div>
-                    <div className="flex flex-col justify-between">
-                      <h4 className="font-lato font-bold text-dark-1 md:text-md text-sm">Gregorius Edrik Lawanto</h4>
-                      <p className="font-lato font-regular text-dark-2 md:text-sm text-xs">
-                        Senior Talent Acquisition <span className="hidden sm:inline">di</span>
-                        <span className="font-lato font-bold text-dark-2 sm:text-sm text-xs hidden sm:inline"> WingsGroup</span>
-                      </p>
-                    </div>
-                  </div>
-                  <p className="font-lato text-dark-1 sm:text-md text-sm">
-                    Berkarier di bidang HR selama lebih dari 3 tahun. Saat ini bekerja sebagai Senior Talent Acquisition Specialist di Wings Group Indonesia (Sayap Mas Utama) selama hampir 1 tahun.
-                  </p>
-                </div>
+                <TutorLayouts />
+                <TutorLayouts />
               </div>
             </div>
 
             {isLoggedIn ? (
               <>
-                <div className="col-span-1 md:col-span-2 w-full flex flex-col gap-2 border border-bg-border rounded-xl bg-white p-4">
+                <div className="col-span-1 md:col-span-2 w-full flex flex-col gap-5 border border-bg-border rounded-xl bg-white p-4">
                   <h3 className="font-poppins font-semibold md:text-lg text-md text-dark-1">Kamu akan Mempelajari</h3>
-                  <div className="flex flex-row gap-2 justify-between py-2 cursor-pointer" onClick={toggleSection}>
-                    <h4 className="font-poppins font-semibold md:text-lg text-md text-primary-400 truncate sm:whitespace-normal">Introduction to Course 1: Foundations of User Experience Design</h4>
-                    <span>{isOpen ? <DropdownArrow colorClass="text-dark-2" direction="up" /> : <DropdownArrow colorClass="text-dark-2" direction="down" />}</span>
-                  </div>
-                  {isOpen && (
-                    <>
-                      <div className="overflow-hidden w-full border border-bg-border mb-1 rounded-xl bg-white hover:bg-gr-50 cursor-pointer flex flex-col items-start relative p-4 gap-4">
-                        <div className="flex flex-row justify-between w-full gap-4">
-                          <p className="font-lato font-semibold text-dark-1 md:text-md sm:text-sm text-xs truncate sm:whitespace-normal">The basics of user experience design</p>
-                          <div className="sm:flex flex-row self-end gap-2 hidden">
-                            <Play />
-                            <p className="font-lato text-dark-2 md:text-md sm:text-sm text-xs mr-2">Video</p>
-                            <Watch />
-                            <p className="font-lato text-dark-2 md:text-md sm:text-sm text-xs">12 Menit</p>
-                          </div>
-                        </div>
+                  {["Introduction to Course 1: Foundations of User Experience Design", "Universal design, inclusive design, and equity-focused design", "Introduction to design sprints", "Introduction to UX research"].map((title, index) => (
+                    <div key={index}>
+                      <div className="flex flex-row justify-between cursor-pointer" onClick={() => toggleSection(index)}>
+                        <h4 className="font-poppins font-semibold md:text-lg text-md text-primary-400 truncate sm:whitespace-normal">{title}</h4>
+                        <span>{isOpen[index] ? <DropdownArrow colorClass="text-dark-2" direction="up" /> : <DropdownArrow colorClass="text-dark-2" direction="down" />}</span>
                       </div>
-                      <div className="overflow-hidden w-full border border-bg-border mb-1 rounded-xl bg-white hover:bg-gr-50 cursor-pointer flex flex-col items-start relative p-4 gap-4">
-                        <div className="flex flex-row justify-between w-full gap-4">
-                          <p className="font-lato font-semibold text-dark-1 md:text-md sm:text-sm text-xs truncate sm:whitespace-normal">Jobs in the field of user experience</p>
-                          <div className="sm:flex flex-row self-end gap-2 hidden">
-                            <Play />
-                            <p className="font-lato text-dark-2 md:text-md sm:text-sm text-xs mr-2">Video</p>
-                            <Watch />
-                            <p className="font-lato text-dark-2 md:text-md sm:text-sm text-xs">12 Menit</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="overflow-hidden w-full border border-bg-border mb-1 rounded-xl bg-white hover:bg-gr-50 cursor-pointer flex flex-col items-start relative p-4 gap-4">
-                        <div className="flex flex-row justify-between w-full gap-4">
-                          <p className="font-lato font-semibold text-dark-1 md:text-md sm:text-sm text-xs truncate sm:whitespace-normal">The product development life cycle</p>
-                          <div className="sm:flex flex-row self-end gap-2 hidden">
-                            <Play />
-                            <p className="font-lato text-dark-2 md:text-md sm:text-sm text-xs mr-2">Video</p>
-                            <Watch />
-                            <p className="font-lato text-dark-2 md:text-md sm:text-sm text-xs">12 Menit</p>
-                          </div>
-                        </div>
-                      </div>
-                    </>
-                  )}
-                  {/* <div className="flex flex-row gap-2 justify-between py-2 cursor-pointer" onClick={toggleSection}>
-                    <h4 className="font-poppins font-semibold md:text-lg text-md text-primary-400">Universal design, inclusive design, and equity-focused design</h4>
-                    <span>{isOpen ? <DropdownArrow colorClass="text-dark-2" direction="up" /> : <DropdownArrow colorClass="text-dark-2" direction="down" />}</span>
-                  </div>
-                  <div className="flex flex-row gap-2 justify-between py-2 cursor-pointer" onClick={toggleSection}>
-                    <h4 className="font-poppins font-semibold md:text-lg text-md text-primary-400">Introduction to design sprints</h4>
-                    <span>{isOpen ? <DropdownArrow colorClass="text-dark-2" direction="up" /> : <DropdownArrow colorClass="text-dark-2" direction="down" />}</span>
-                  </div>
-                  <div className="flex flex-row gap-2 justify-between py-2 cursor-pointer" onClick={toggleSection}>
-                    <h4 className="font-poppins font-semibold md:text-lg text-md text-primary-400">Introduction to UX research</h4>
-                    <span>{isOpen ? <DropdownArrow colorClass="text-dark-2" direction="up" /> : <DropdownArrow colorClass="text-dark-2" direction="down" />}</span>
-                  </div> */}
+                      {isOpen[index] && (
+                        <>
+                          <DurationLayouts title="The basics of user experience design" />
+                          <DurationLayouts title="Jobs in the field of user experience" />
+                          <DurationLayouts title="The product development life cycle" />
+                        </>
+                      )}
+                    </div>
+                  ))}
                 </div>
               </>
             ) : (
               <div className="col-span-1 md:col-span-2 w-full flex flex-col gap-2 border border-bg-border rounded-xl bg-white p-4">
                 <h3 className="font-poppins font-semibold md:text-lg text-md text-dark-1">Kamu akan Mempelajari</h3>
-                <div className="flex flex-row gap-2 justify-between py-2 cursor-pointer" onClick={toggleSection}>
-                  <h4 className="font-poppins font-semibold md:text-lg text-md text-primary-400">Introduction to HR</h4>
-                  <span>{isOpen ? <DropdownArrow colorClass="text-dark-2" direction="up" /> : <DropdownArrow colorClass="text-dark-2" direction="down" />}</span>
-                </div>
-                {isOpen && (
-                  <>
-                    <div className="overflow-hidden w-full border border-bg-border rounded-xl bg-white hover:bg-gr-50 cursor-pointer flex flex-col items-start relative p-4 gap-4">
-                      <div className="flex flex-row justify-between w-full gap-4">
-                        <p className="font-lato font-semibold text-dark-1 md:text-md sm:text-sm text-xs">Introduction to HR</p>
-                        <div className="flex flex-row self-end gap-2">
-                          <Play />
-                          <p className="font-lato text-dark-2 md:text-md sm:text-sm text-xs mr-2">Video</p>
-                          <Watch />
-                          <p className="font-lato text-dark-2 md:text-md sm:text-sm text-xs">12 Menit</p>
-                        </div>
-                      </div>
+                {["Introduction to HR", "Introduction to HR", "Introduction to HR", "Introduction to HR"].map((title, index) => (
+                  <div key={index}>
+                    <div className="flex flex-row gap-2 justify-between py-2 cursor-pointer" onClick={() => toggleSection(index)}>
+                      <h4 className="font-poppins font-semibold md:text-lg text-md text-primary-400 truncate sm:whitespace-normal">{title}</h4>
+                      <span>{isOpen[index] ? <DropdownArrow colorClass="text-dark-2" direction="up" /> : <DropdownArrow colorClass="text-dark-2" direction="down" />}</span>
                     </div>
-                    <div className="overflow-hidden w-full border border-bg-border rounded-xl bg-white hover:bg-gr-50 cursor-pointer flex flex-col items-start relative p-4 gap-4">
-                      <div className="flex flex-row justify-between w-full gap-4">
-                        <p className="font-lato font-semibold text-dark-1 md:text-md sm:text-sm text-xs">Introduction to HR</p>
-                        <div className="flex flex-row self-end gap-2">
-                          <Play />
-                          <p className="font-lato text-dark-2 md:text-md sm:text-sm text-xs mr-2">Video</p>
-                          <Watch />
-                          <p className="font-lato text-dark-2 md:text-md sm:text-sm text-xs">12 Menit</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="overflow-hidden w-full border border-bg-border rounded-xl bg-white hover:bg-gr-50 cursor-pointer flex flex-col items-start relative p-4 gap-4">
-                      <div className="flex flex-row justify-between w-full gap-4">
-                        <p className="font-lato font-semibold text-dark-1 md:text-md sm:text-sm text-xs">Introduction to HR</p>
-                        <div className="flex flex-row self-end gap-2">
-                          <Play />
-                          <p className="font-lato text-dark-2 md:text-md sm:text-sm text-xs mr-2">Video</p>
-                          <Watch />
-                          <p className="font-lato text-dark-2 md:text-md sm:text-sm text-xs">12 Menit</p>
-                        </div>
-                      </div>
-                    </div>
-                  </>
-                )}
+                    {isOpen[index] && (
+                      <>
+                        <DurationLayouts title="Introduction to HR" />
+                        <DurationLayouts title="Introduction to HR" />
+                        <DurationLayouts title="Introduction to HR" />
+                      </>
+                    )}
+                  </div>
+                ))}
               </div>
             )}
 
             <div className="col-span-1 md:col-span-2 w-full flex flex-col gap-4 border border-bg-border rounded-xl bg-white p-4">
               <h3 className="font-poppins font-semibold md:text-lg text-md text-dark-1">Rating dan Review</h3>
               <div className="flex md:flex-row flex-col justify-between gap-4">
-                <div className="overflow-hidden w-full border border-bg-border rounded-xl bg-white flex flex-col items-start relative p-4 gap-3">
-                  <div className="flex items-center gap-2 mt-auto">
-                    <div className="w-10 h-10 overflow-hidden">
-                      <img src="/avatar/ava7.png" alt="avatar" />
-                    </div>
-                    <div className="flex flex-col justify-between">
-                      <h4 className="font-lato font-bold text-dark-1 md:text-md text-sm">Gregorius Edrik Lawanto</h4>
-                      <p className="font-lato font-regular text-dark-2 md:text-sm text-xs">Alumni Batch 2</p>
-                    </div>
-                  </div>
-                  <p className="font-lato text-dark-1 sm:text-md text-sm">
-                    Berkarier di bidang HR selama lebih dari 3 tahun. Saat ini bekerja sebagai Senior Talent Acquisition Specialist di Wings Group Indonesia (Sayap Mas Utama) selama hampir 1 tahun.
-                  </p>
-                </div>
-                <div className="overflow-hidden w-full border border-bg-border rounded-xl bg-white flex flex-col items-start relative p-4 gap-3">
-                  <div className="flex items-center gap-2 mt-auto">
-                    <div className="w-10 h-10 overflow-hidden">
-                      <img src="/avatar/ava6.png" alt="avatar" />
-                    </div>
-                    <div className="flex flex-col justify-between">
-                      <h4 className="font-lato font-bold text-dark-1 md:text-md text-sm">Gregorius Edrik Lawanto</h4>
-                      <p className="font-lato font-regular text-dark-2 md:text-sm text-xs">Alumni Batch 4</p>
-                    </div>
-                  </div>
-                  <p className="font-lato text-dark-1 sm:text-md text-sm">
-                    Berkarier di bidang HR selama lebih dari 3 tahun. Saat ini bekerja sebagai Senior Talent Acquisition Specialist di Wings Group Indonesia (Sayap Mas Utama) selama hampir 1 tahun.
-                  </p>
-                </div>
+                <TutorLayouts />
+                <TutorLayouts />
               </div>
             </div>
           </div>
@@ -345,11 +243,15 @@ const DetailProduct = () => {
             <p className="font-lato text-dark-2 md:text-lg sm:text-md text-sm pt-2">Ekspansi Pengetahuan Anda dengan Rekomendasi Spesial Kami!</p>
           </div>
           <div className="grid xl:grid-cols-3 md:grid-cols-2 w-full md:gap-8 gap-4 cursor-pointer">
-            {displayedCards.map((item) => (
-              <RouterLink to={`/product/${item.id}`} key={item.id}>
-                <CardLayouths card={item} />
-              </RouterLink>
-            ))}
+            {displayedCards.length > 0 ? (
+              displayedCards.map((card) => (
+                <RouterLink to={`/product/${card.id}`} key={card.id}>
+                  <CardLayouths card={card} />
+                </RouterLink>
+              ))
+            ) : (
+              <p>No related cards found.</p>
+            )}
           </div>
         </div>
       </section>

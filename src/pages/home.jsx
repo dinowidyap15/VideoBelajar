@@ -8,7 +8,7 @@ import Header from "../components/Fragments/Header";
 const HomePage = () => {
   return (
     <main className="overflow-hidden">
-      <Header berandaColor="text-primary-400" berandaHover="hover:text-primary-500"/>
+      <Header />
       <Hero />
       <Collections />
       <Newsletter />

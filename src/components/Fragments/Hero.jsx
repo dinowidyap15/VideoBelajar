@@ -9,7 +9,7 @@ const Hero = () => {
         <div className="relative w-full h-96 overflow-hidden rounded-xl">
           <img src="/images/hero.jpg" alt="hero img" className="w-full h-full object-cover" />
 
-          <div className="absolute inset-0 bg-black/80 z-10"></div>
+          <div className="absolute inset-0 bg-black/75 z-10"></div>
 
           <div className="absolute inset-0 flex flex-col h-full text-light-1 justify-center text-center items-center xl:px-32 lg:px-12 sm:px-10 px-6 xl:py-18 lg:py-16 sm:py-10 py-8 md:gap-4 gap-2 z-20">
             <h1 className="font-poppins font-bold lg:text-4xl md:text-3xl sm:text-2xl text-xl leading-[1.1] z-20">
@@ -31,4 +31,5 @@ const Hero = () => {
     </div>
   );
 };
+
 export default Hero;

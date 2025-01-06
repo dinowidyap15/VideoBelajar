@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { registerUser } from "../../services/auth.service";
 import InputForm from "../Elements/Input";
-import DropdownArrow from "../Elements/SVG/arrow";
 import Button from "../Elements/Button";
 import { Link as RouterLink } from "react-router-dom";
-import OffEyeIcon from "../Elements/SVG/offeye";
-import OnEyeIcon from "../Elements/SVG/oneye";
+import { DropdownArrow, OffEyeIcon, OnEyeIcon } from "../Elements/SVG";
 
 const FormRegister = () => {
   const [formData, setFormData] = useState({
@@ -65,13 +63,13 @@ const FormRegister = () => {
       password: formData.password,
     };
 
-    localStorage.setItem("user", JSON.stringify(userData)); 
+    localStorage.setItem("user", JSON.stringify(userData));
 
     registerUser(userData, (response) => {
       if (response) {
         setAlertMessage("Pendaftaran berhasil! Silahkan login.");
         setAlertType("success");
-        setTimeout(() => window.location.href = "/login", 2000);
+        setTimeout(() => (window.location.href = "/login"), 2000);
       } else {
         setAlertMessage("Terjadi kesalahan saat mendaftar. Coba lagi!");
         setAlertType("error");
@@ -81,23 +79,11 @@ const FormRegister = () => {
 
   return (
     <>
-    <form onSubmit={handleRegister} className="mt-8">
-      <InputForm
-          label="Nama Lengkap"
-          type="text"
-          name="fullName"
-          value={formData.fullName}
-          onChange={handleChange}
-        />
-        
-        <InputForm
-          label="E-Mail"
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        
+      <form onSubmit={handleRegister} className="mt-8">
+        <InputForm label="Nama Lengkap" type="text" name="fullName" value={formData.fullName} onChange={handleChange} />
+
+        <InputForm label="E-Mail" type="email" name="email" value={formData.email} onChange={handleChange} />
+
         <div className="mb-4 mt-4 relative">
           <label htmlFor="gender" className="flex items-center gap-1 font-lato font-regular text-dark-2 sm:text-md text-sm">
             Jenis Kelamin <span className="font-poppins text-red-500">*</span>
@@ -114,7 +100,7 @@ const FormRegister = () => {
             <option value="pria">Pria</option>
           </select>
           <div className="absolute inset-y-0 right-2 pt-7 flex items-center pointer-events-none">
-            <DropdownArrow colorClass="text-dark-2"/>
+            <DropdownArrow colorClass="text-dark-2" />
           </div>
         </div>
 
@@ -135,16 +121,10 @@ const FormRegister = () => {
                 <option value="US">+1</option>
               </select>
               <div className="absolute inset-y-0 right-2 pt-2 flex items-center pointer-events-none">
-                <DropdownArrow colorClass="text-dark-2"/>
+                <DropdownArrow colorClass="text-dark-2" />
               </div>
             </div>
-            <input
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              className="font-lato w-2/3 mt-2 h-12 px-4 border border-bg-border rounded-lg text-dark-1 focus:outline-none focus:ring-1 focus:ring-gr-300"
-            />
+            <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="font-lato w-2/3 mt-2 h-12 px-4 border border-bg-border rounded-lg text-dark-1 focus:outline-none focus:ring-1 focus:ring-gr-300" />
           </div>
         </div>
 
@@ -157,11 +137,7 @@ const FormRegister = () => {
             onChange={handleChange}
             className="font-lato w-full mt-2 h-12 px-4 border border-bg-border rounded-lg text-dark-1 focus:outline-none focus:ring-1 focus:ring-gr-300"
           />
-          <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-            className="absolute inset-y-0 right-2 pt-7 flex items-center cursor-pointer"
-          >
+          <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute inset-y-0 right-2 pt-7 flex items-center cursor-pointer">
             {showPassword ? <OnEyeIcon /> : <OffEyeIcon />}
           </button>
         </div>
@@ -175,34 +151,24 @@ const FormRegister = () => {
             onChange={handleChange}
             className="font-lato w-full mt-2 h-12 px-4 border border-bg-border rounded-lg text-dark-1 focus:outline-none focus:ring-1 focus:ring-gr-300"
           />
-          <button
-            type="button"
-            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-            className="absolute inset-y-0 right-2 pt-7 flex items-center cursor-pointer"
-          >
+          <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute inset-y-0 right-2 pt-7 flex items-center cursor-pointer">
             {showConfirmPassword ? <OnEyeIcon /> : <OffEyeIcon />}
           </button>
         </div>
 
-      {error && <p className="text-error-default text-start my-4">{error}</p>}
+        {error && <p className="text-error-default text-start my-4">{error}</p>}
 
-      {alertMessage && (
-        <div
-          className={`alert ${alertType === "success" ? "bg-success-default" : "bg-error-default"} flex justify-center gap-4 p-3 rounded-xl text-white mb-4`}
-        >
-          {alertMessage}
-        </div>
-      )}
+        {alertMessage && <div className={`alert ${alertType === "success" ? "bg-success-default" : "bg-error-default"} flex justify-center gap-4 p-3 rounded-xl text-white mb-4`}>{alertMessage}</div>}
 
-      <Button variant="primary" margin="mt-4" btn={1} type="submit">
-        Daftar
-      </Button>
-      <RouterLink to="/login">
-        <Button variant="primary" margin="mt-4" btn={2}>
-          Masuk
+        <Button variant="primary" margin="mt-4" btn={1} type="submit">
+          Daftar
         </Button>
-      </RouterLink>
-    </form>
+        <RouterLink to="/login">
+          <Button variant="primary" margin="mt-4" btn={2}>
+            Masuk
+          </Button>
+        </RouterLink>
+      </form>
     </>
   );
 };

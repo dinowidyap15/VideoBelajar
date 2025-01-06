@@ -1,6 +1,6 @@
 import React from "react";
 
-const Logo = () => {
+export const Logo = () => {
   return (
     <svg viewBox="0 0 194 31" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M5.824 23.04L0 7.168H4.288L8.32 19.168L12.352 7.168H16.64L10.784 23.04H5.824Z" fill="#F64920" />
@@ -55,4 +55,132 @@ const Logo = () => {
   );
 };
 
-export default Logo;
+export const HamMenu = () => {
+  return (
+    <div>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 15.5V17.5H22V15.5H2ZM2 10.5V12.5H22V10.5H2ZM2 5.5V7.5H22V5.5H2Z" fill="#4A505C" />
+      </svg>
+    </div>
+  );
+};
+
+export const XMenu = () => {
+  return (
+    <div>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 6L6 18M6 6L18 18" stroke="#4A505C" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </div>
+  );
+};
+
+export const Triangle = ({ direction = "up" }) => {
+  const rotateStyle = direction === "down" ? { transform: "rotate(-180deg)" } : {};
+
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={rotateStyle}>
+      <path d="M7 10L12 15L17 10H7Z" fill="#333333" fill-opacity="0.68" />
+    </svg>
+  );
+};
+
+export const DropdownArrow = ({ direction = "down", colorClass = "text-primary-400", opacity = 1 }) => {
+  const rotateStyle = direction === "right" ? { transform: "rotate(-90deg)" } : direction === "up" ? { transform: "rotate(180deg)" } : direction === "left" ? { transform: "rotate(90deg)" } : {};
+
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={rotateStyle} className={`${colorClass}`}>
+      <g clipPath="url(#clip0_8210_1881)">
+        <path d="M7.41 8.58984L12 13.1698L16.59 8.58984L18 9.99984L12 15.9998L6 9.99984L7.41 8.58984Z" className="fill-current" style={{ opacity }} />
+      </g>
+      <defs>
+        <clipPath id="clip0_8210_1881">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+};
+
+export const OnEyeIcon = () => {
+  return (
+    <div>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M12 6C15.79 6 19.17 8.13 20.82 11.5C19.17 14.87 15.79 17 12 17C8.21 17 4.83 14.87 3.18 11.5C4.83 8.13 8.21 6 12 6ZM12 4C7 4 2.73 7.11 1 11.5C2.73 15.89 7 19 12 19C17 19 21.27 15.89 23 11.5C21.27 7.11 17 4 12 4ZM12 9C13.38 9 14.5 10.12 14.5 11.5C14.5 12.88 13.38 14 12 14C10.62 14 9.5 12.88 9.5 11.5C9.5 10.12 10.62 9 12 9ZM12 7C9.52 7 7.5 9.02 7.5 11.5C7.5 13.98 9.52 16 12 16C14.48 16 16.5 13.98 16.5 11.5C16.5 9.02 14.48 7 12 7Z"
+          fill="#333333"
+          fill-opacity="0.38"
+        />
+      </svg>
+    </div>
+  );
+};
+
+export const OffEyeIcon = () => {
+  return (
+    <div>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M11.83 9L15 12.16V12C15 11.2044 14.6839 10.4413 14.1213 9.87868C13.5587 9.31607 12.7956 9 12 9H11.83ZM7.53 9.8L9.08 11.35C9.03 11.56 9 11.77 9 12C9 12.7956 9.31607 13.5587 9.87868 14.1213C10.4413 14.6839 11.2044 15 12 15C12.22 15 12.44 14.97 12.65 14.92L14.2 16.47C13.53 16.8 12.79 17 12 17C10.6739 17 9.40215 16.4732 8.46447 15.5355C7.52678 14.5979 7 13.3261 7 12C7 11.21 7.2 10.47 7.53 9.8ZM2 4.27L4.28 6.55L4.73 7C3.08 8.3 1.78 10 1 12C2.73 16.39 7 19.5 12 19.5C13.55 19.5 15.03 19.2 16.38 18.66L16.81 19.08L19.73 22L21 20.73L3.27 3M12 7C13.3261 7 14.5979 7.52678 15.5355 8.46447C16.4732 9.40215 17 10.6739 17 12C17 12.64 16.87 13.26 16.64 13.82L19.57 16.75C21.07 15.5 22.27 13.86 23 12C21.27 7.61 17 4.5 12 4.5C10.6 4.5 9.26 4.75 8 5.2L10.17 7.35C10.74 7.13 11.35 7 12 7Z"
+          fill="#333333"
+          fill-opacity="0.38"
+        />
+      </svg>
+    </div>
+  );
+};
+
+export const Check = () => {
+  return (
+    <div>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 3H5C3.89 3 3 3.9 3 5V19C3 20.1 3.89 21 5 21H19C20.11 21 21 20.1 21 19V5C21 3.9 20.11 3 19 3ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" fill="#3ECF4C" />
+      </svg>
+    </div>
+  );
+};
+
+export const UnCheck = () => {
+  return (
+    <div>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_4_1951)">
+          <rect x="3.5" y="3.5" width="17" height="17" rx="3.5" fill="#E2FCD9" fill-opacity="0.8" stroke="#3ECF4C" />
+        </g>
+        <defs>
+          <clipPath id="clip0_4_1951">
+            <rect width="24" height="24" rx="2" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+  );
+};
+
+export const Watch = () => {
+  return (
+    <div>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M12 7V12H17M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z"
+          stroke="#333333"
+          stroke-opacity="0.68"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+  );
+};
+
+export const Play = () => {
+  return (
+    <div>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z" stroke="#333333" stroke-opacity="0.68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M10 15V9L15 12L10 15Z" stroke="#333333" stroke-opacity="0.68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </div>
+  );
+};
