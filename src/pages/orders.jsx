@@ -1,16 +1,16 @@
 import React from "react";
-import Category from "../components/Fragments/Category";
 import Header from "../components/Fragments/Header";
 import Footer from "../components/Fragments/Footer";
+import Orders from "../components/Fragments/Orders";
 
-const CategoryPage = () => {
+const OrdersPage = () => {
   return (
     <main className="overflow-hidden">
-      <Header categoryColor="text-primary-400" />
-      <Category />
+      <Header />
+      <Orders />
       <Footer />
     </main>
   );
 };
 
-export default CategoryPage;
+export default OrdersPage;

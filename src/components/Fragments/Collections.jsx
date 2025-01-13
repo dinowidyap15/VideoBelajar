@@ -52,16 +52,26 @@ const Collections = () => {
             <h2 className="font-poppins font-semibold md:text-2xl text-xl leading-[1.1]">Koleksi Video Pembelajaran Unggulan</h2>
             <p className="font-lato text-dark-2 md:text-lg sm:text-md text-sm pt-2">Jelajahi Dunia Pengetahuan Melalui Pilihan Kami!</p>
           </div>
-          <div>
-            <ul className="flex flex-row items-start list-none mb-8 md:text-lg sm:text-md text-xs lg:gap-8 md:gap-6 gap-3 cursor-pointer">
-              {categories.map((category) => (
-                <li key={category} className={`relative pb-4 ${activeCategory === category ? "text-tertiary-400 hover:text-tertiary-500" : "text-dark-2 hover:text-dark-1"}`} onClick={() => setActiveCategory(category)}>
-                  <a>{category}</a>
-                  {activeCategory === category && <span className="absolute bottom-[-6px] left-0 inline-block sm:w-14 w-10 h-1.5 bg-tertiary-400 hover:text-tertiary-500 rounded-lg"></span>}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <div className="overflow-x-auto whitespace-nowrap scrollbar-hide">
+             <ul className="flex items-start list-none mb-12 md:text-lg sm:text-md text-sm gap-7 cursor-pointer">
+               {categories.map((category) => (
+                 <li
+                   key={category}
+                   className={`relative pb-4 ${
+                     activeCategory === category
+                      ? "text-tertiary-400"
+                       : "text-dark-2 hover:text-tertiary-400"
+                   }`}
+                   onClick={() => setActiveCategory(category)}
+                 >
+                   <a>{category}</a>
+                   {activeCategory === category && (
+                     <span className="absolute bottom-[-6px] left-0 inline-block w-full h-1.5 bg-tertiary-400 hover:text-tertiary-500 rounded-lg"></span>
+                   )}
+                 </li>
+               ))}
+             </ul>
+           </div>
         </div>
       </section>
 

@@ -11,6 +11,9 @@ import CategoryPage from "./pages/category";
 import DetailProductPage from "./pages/detailProduct";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import ProfilePage from "./pages/profile";
+import ClassesPage from "./pages/classes";
+import OrdersPage from "./pages/orders";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +40,18 @@ const router = createBrowserRouter([
   {
     path: "/product/:id",
     element: <DetailProductPage />,
+  },
+  {
+    path: "/profile",
+    element: <ProfilePage />,
+  },
+  {
+    path: "/classes",
+    element: <ClassesPage />,
+  },
+  {
+    path: "/orders",
+    element: <OrdersPage />,
   },
 ]);
 

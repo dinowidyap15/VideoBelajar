@@ -64,11 +64,11 @@ const DetailProduct = () => {
     <>
       <section className="flex flex-col justify-between max-w-full mx-auto xl:pt-16 lg:pt-14 md:pt-12 pt-8 xl:px-32 lg:px-20 md:px-16 px-6 bg-bg-main">
         <p className="flex flex-row sm:text-md text-sm font-lato text-dark-2 mb-10">
-          <RouterLink to="/home" smooth={true} duration={10} className={`text-dark-2 hover:text-dark-1 cursor-pointer`}>
+          <RouterLink to="/home" className={`text-dark-2 hover:text-dark-1 cursor-pointer`}>
             Beranda
           </RouterLink>
           <span className="mx-2">/</span>
-          <RouterLink to="/category" smooth={true} duration={10} className={`text-dark-2 hover:text-dark-1 cursor-pointer`}>
+          <RouterLink to="/category" className={`text-dark-2 hover:text-dark-1 cursor-pointer`}>
             {product.category}
           </RouterLink>
           <span className="mx-2">/</span>
@@ -191,7 +191,7 @@ const DetailProduct = () => {
                     <div key={index}>
                       <div className="flex flex-row justify-between cursor-pointer" onClick={() => toggleSection(index)}>
                         <h4 className="font-poppins font-semibold md:text-lg text-md text-primary-400 truncate sm:whitespace-normal">{title}</h4>
-                        <span>{isOpen[index] ? <DropdownArrow colorClass="text-dark-2" direction="up" /> : <DropdownArrow colorClass="text-dark-2" direction="down" />}</span>
+                        <span>{isOpen[index] ? <DropdownArrow colorClass="text-dark-3" direction="up" /> : <DropdownArrow colorClass="text-dark-3" direction="down" />}</span>
                       </div>
                       {isOpen[index] && (
                         <>
@@ -211,7 +211,7 @@ const DetailProduct = () => {
                   <div key={index}>
                     <div className="flex flex-row gap-2 justify-between py-2 cursor-pointer" onClick={() => toggleSection(index)}>
                       <h4 className="font-poppins font-semibold md:text-lg text-md text-primary-400 truncate sm:whitespace-normal">{title}</h4>
-                      <span>{isOpen[index] ? <DropdownArrow colorClass="text-dark-2" direction="up" /> : <DropdownArrow colorClass="text-dark-2" direction="down" />}</span>
+                      <span>{isOpen[index] ? <DropdownArrow colorClass="text-dark-3" direction="up" /> : <DropdownArrow colorClass="text-dark-3" direction="down" />}</span>
                     </div>
                     {isOpen[index] && (
                       <>

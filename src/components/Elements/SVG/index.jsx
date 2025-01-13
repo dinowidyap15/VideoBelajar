@@ -75,6 +75,84 @@ export const XMenu = () => {
   );
 };
 
+export const LinkedInIcon = () => {
+  return (
+    <svg className="hover:text-secondary-400" width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path opacity="0.35" fill-rule="evenodd" clip-rule="evenodd" d="M18.5 36C28.165 36 36 28.165 36 18.5C36 8.83502 28.165 1 18.5 1C8.83502 1 1 8.83502 1 18.5C1 28.165 8.83502 36 18.5 36Z" stroke="#222325" stroke-width="1.5" />
+      <path
+        d="M22.3335 14.6666C23.6596 14.6666 24.9313 15.1934 25.869 16.1311C26.8067 17.0688 27.3335 18.3405 27.3335 19.6666V25.5H24.0002V19.6666C24.0002 19.2246 23.8246 18.8007 23.512 18.4881C23.1994 18.1756 22.7755 18 22.3335 18C21.8915 18 21.4675 18.1756 21.155 18.4881C20.8424 18.8007 20.6668 19.2246 20.6668 19.6666V25.5H17.3335V19.6666C17.3335 18.3405 17.8603 17.0688 18.798 16.1311C19.7356 15.1934 21.0074 14.6666 22.3335 14.6666Z"
+        fill="currentColor"
+      />
+      <path d="M13.9998 15.5H10.6665V25.5H13.9998V15.5Z" fill="currentColor" />
+      <path d="M12.3332 13C13.2536 13 13.9998 12.2538 13.9998 11.3333C13.9998 10.4128 13.2536 9.66663 12.3332 9.66663C11.4127 9.66663 10.6665 10.4128 10.6665 11.3333C10.6665 12.2538 11.4127 13 12.3332 13Z" fill="currentColor" />
+    </svg>
+  );
+};
+
+export const FbIcon = () => {
+  return (
+    <svg className="hover:text-secondary-400" width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path opacity="0.35" fill-rule="evenodd" clip-rule="evenodd" d="M18.5 36C28.165 36 36 28.165 36 18.5C36 8.83502 28.165 1 18.5 1C8.83502 1 1 8.83502 1 18.5C1 28.165 8.83502 36 18.5 36Z" stroke="#222325" stroke-width="1.5" />
+      <path
+        d="M24.0002 9.66663H21.5002C20.3951 9.66663 19.3353 10.1056 18.5539 10.887C17.7725 11.6684 17.3335 12.7282 17.3335 13.8333V16.3333H14.8335V19.6666H17.3335V26.3333H20.6668V19.6666H23.1668L24.0002 16.3333H20.6668V13.8333C20.6668 13.6123 20.7546 13.4003 20.9109 13.244C21.0672 13.0878 21.2791 13 21.5002 13H24.0002V9.66663Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+};
+
+export const IgIcon = () => {
+  return (
+    <svg className="hover:text-secondary-400" width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path opacity="0.35" fill-rule="evenodd" clip-rule="evenodd" d="M18.5 36C28.165 36 36 28.165 36 18.5C36 8.83502 28.165 1 18.5 1C8.83502 1 1 8.83502 1 18.5C1 28.165 8.83502 36 18.5 36Z" stroke="#222325" stroke-width="1.5" />
+      <g clip-path="url(#clip0_7127_9303)">
+        <path
+          d="M23.1665 10.6666H14.8332C12.532 10.6666 10.6665 12.5321 10.6665 14.8333V23.1666C10.6665 25.4678 12.532 27.3333 14.8332 27.3333H23.1665C25.4677 27.3333 27.3332 25.4678 27.3332 23.1666V14.8333C27.3332 12.5321 25.4677 10.6666 23.1665 10.6666Z"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M22.3333 18.475C22.4361 19.1685 22.3176 19.8769 21.9947 20.4992C21.6718 21.1215 21.1609 21.6262 20.5346 21.9414C19.9083 22.2566 19.1986 22.3663 18.5064 22.255C17.8142 22.1436 17.1747 21.8167 16.679 21.321C16.1832 20.8252 15.8564 20.1857 15.745 19.4935C15.6336 18.8013 15.7433 18.0916 16.0585 17.4653C16.3737 16.8391 16.8784 16.3281 17.5007 16.0052C18.1231 15.6823 18.8314 15.5638 19.5249 15.6667C20.2324 15.7716 20.8873 16.1012 21.393 16.6069C21.8987 17.1126 22.2283 17.7676 22.3333 18.475Z"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path d="M23.5835 14.4166H23.5918" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </g>
+      <defs>
+        <clipPath id="clip0_7127_9303">
+          <rect width="20" height="20" fill="white" transform="translate(9 9)" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+};
+
+export const TwitIcon = () => {
+  return (
+    <svg className="hover:text-secondary-400" width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path opacity="0.35" fill-rule="evenodd" clip-rule="evenodd" d="M18.5 36C28.165 36 36 28.165 36 18.5C36 8.83502 28.165 1 18.5 1C8.83502 1 1 8.83502 1 18.5C1 28.165 8.83502 36 18.5 36Z" stroke="#222325" stroke-width="1.5" />
+      <g clip-path="url(#clip0_7127_9309)">
+        <path
+          d="M28.1663 11.5001C27.3683 12.063 26.4848 12.4935 25.5497 12.7751C25.0478 12.198 24.3808 11.789 23.6389 11.6034C22.897 11.4177 22.1159 11.4644 21.4014 11.7371C20.6869 12.0098 20.0734 12.4954 19.6438 13.1282C19.2143 13.7609 18.9894 14.5104 18.9997 15.2751V16.1084C17.5352 16.1464 16.0841 15.8216 14.7755 15.163C13.467 14.5043 12.3416 13.5323 11.4997 12.3334C11.4997 12.3334 8.16634 19.8334 15.6663 23.1667C13.9501 24.3317 11.9056 24.9159 9.83301 24.8334C17.333 29.0001 26.4997 24.8334 26.4997 15.2501C26.4989 15.018 26.4766 14.7864 26.433 14.5584C27.2835 13.7197 27.8837 12.6607 28.1663 11.5001V11.5001Z"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_7127_9309">
+          <rect width="20" height="20" fill="white" transform="translate(9 9)" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+};
+
 export const Triangle = ({ direction = "up" }) => {
   const rotateStyle = direction === "down" ? { transform: "rotate(-180deg)" } : {};
 
@@ -182,5 +260,32 @@ export const Play = () => {
         <path d="M10 15V9L15 12L10 15Z" stroke="#333333" stroke-opacity="0.68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
     </div>
+  );
+};
+
+export const User = () => {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="currentColor" />
+    </svg>
+  );
+};
+
+export const Book = () => {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V4C20 2.9 19.1 2 18 2ZM6 4H11V12L8.5 10.5L6 12V4Z" fill="currentColor" />
+    </svg>
+  );
+};
+
+export const Cart = () => {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M17.21 8.99953L12.83 2.43953C12.64 2.15953 12.32 2.01953 12 2.01953C11.68 2.01953 11.36 2.15953 11.17 2.44953L6.79 8.99953H2C1.45 8.99953 1 9.44953 1 9.99953C1 10.0895 1.01 10.1795 1.04 10.2695L3.58 19.5395C3.81 20.3795 4.58 20.9995 5.5 20.9995H18.5C19.42 20.9995 20.19 20.3795 20.43 19.5395L22.97 10.2695L23 9.99953C23 9.44953 22.55 8.99953 22 8.99953H17.21ZM9 8.99953L12 4.59953L15 8.99953H9ZM12 16.9995C10.9 16.9995 10 16.0995 10 14.9995C10 13.8995 10.9 12.9995 12 12.9995C13.1 12.9995 14 13.8995 14 14.9995C14 16.0995 13.1 16.9995 12 16.9995Z"
+        fill="currentColor"
+      />
+    </svg>
   );
 };

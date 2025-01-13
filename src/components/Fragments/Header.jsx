@@ -15,7 +15,7 @@ const Header = (props) => {
     showButton = true, 
     showHamMenu = true,
     categoryColor = "text-dark-2",
-    categoryHover = "hover:text-gr-700",
+    categoryHover = "hover:text-primary-400",
   } = props;
 
   const toggleNavigation = () => setOpenNavigation(!openNavigation);
@@ -24,12 +24,21 @@ const Header = (props) => {
 
   useEffect(() => {
     const currentPath = window.location.pathname;
+    
     if (currentPath === "/category") {
       setActiveMenu("Kategori");
     } else if (currentPath === "/home") {
       setActiveMenu("Beranda");
+    } else if (currentPath === "/profile") {
+      setActiveMenu("Profil Saya");
+    } else if (currentPath === "/classes") {
+      setActiveMenu("Kelas Saya");
+    } else if (currentPath === "/orders") {
+      setActiveMenu("Pesanan Saya");
     }
   }, [window.location.pathname]);
+
+  
 
   return (
     <div id="header" className="relative w-full md:h-[80px] h-[74px] bg-white md:border-b bg-bg-border md:shadow-transparent shadow-lg">

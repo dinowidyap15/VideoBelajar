@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import CreateCardPage from "./CreateCard";
 import CardLayouths from "../Layouts/CardLayouths";
@@ -27,6 +27,7 @@ const Category = () => {
   const [openStudy, setOpenStudy] = useState(false);
   const [openPrice, setOpenPrice] = useState(false);
   const [editCard, setEditCard] = useState(null);
+  const dropdownRef = useRef(null);
 
   const categories = [ 
     "Digital & Teknologi", 
@@ -41,6 +42,22 @@ const Category = () => {
       dispatch(fetchCards());
     }
   }, [dispatch, cards]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    if (dropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownOpen]);
 
   const filteredCards = activeCategory === "Semua Kelas" ? cards : cards.filter((item) => item.category === activeCategory);
   const sortedCards = [...filteredCards].sort((a, b) => {
@@ -118,11 +135,12 @@ const Category = () => {
           </div>
         </div>
       </section>
+      
       <section className="flex sm:flex-row flex-col max-w-full mx-auto xl:pt-10 lg:pt-8 md:pt-6 pt-4 xl:px-32 lg:px-20 md:px-16 px-6 lg:gap-10 gap-6 bg-bg-main">
         <div className="flex flex-col lg:w-1/4 sm:w-1/2 w-full h-1/4 gap-4 overflow-hidden border border-bg-border rounded-xl bg-white items-start relative p-4">
           <div className="flex flex-row justify-between items-center w-full">
             <h3 className="font-poppins font-semibold text-md text-dark-2">Filter</h3>
-            <button onClick={() => dispatch(setActiveCategory("Semua Kelas"))} className="text-tertiary-400 text-md font-semibold hover:text-tertiary-500">
+            <button onClick={() => dispatch(setActiveCategory("Semua Kelas"))} className="text-tertiary-400 text-md font-semibold">
               Reset
             </button>
           </div>
@@ -180,7 +198,7 @@ const Category = () => {
         </div>
 
         <div className="flex flex-col sm:w-3/4 gap-8">
-          <div className="relative flex justify-end z-40">
+          <div className="relative flex justify-end z-40 ml-auto" ref={dropdownRef}>
             <button onClick={() => setDropdownOpen(prev => !prev)} className="flex flex-row px-4 py-2 gap-2 bg-white hover:bg-gr-100 text-dark-2 border border-bg-border rounded-xl active:bg-gr-200">
               Urutkan
               <span>{dropdownOpen ? <Triangle direction="down" /> : <Triangle />}</span>
