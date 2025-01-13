@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "../Elements/Button";
 import { Book, Cart, User } from "../Elements/SVG";
-import FloatingLabelInput from "../Elements/Input/floatingLabel";
+import FloatingLabelInput from "../Elements/Input/Floating";
 import Select from "../Elements/Select";
 import { Link as RouterLink } from "react-router-dom";
 
@@ -19,20 +19,20 @@ const Orders = () => {
             <div className="flex flex-col justify-start w-full p-1 gap-1 cursor-pointer">
               <h3 className="flex flex-row font-poppins font-semibold text-md text-dark-3 p-2 border-2 border-white">
                 <RouterLink to="/profile" className="flex flex-row gap-2 w-full">
-                <User />
-                Profil Saya
+                  <User />
+                  Profil Saya
                 </RouterLink>
               </h3>
               <h3 className="flex flex-row font-poppins font-semibold text-md text-dark-3 p-2 border-2 border-white">
                 <RouterLink to="/classes" className="flex flex-row gap-2 w-full">
-                <Book />
-                Kelas Saya
+                  <Book />
+                  Kelas Saya
                 </RouterLink>
               </h3>
               <h3 className="flex flex-row font-poppins font-semibold text-md text-dark-3 p-2  text-secondary-400 rounded-md bg-secondary-50 border-2 border-secondary-400">
                 <RouterLink to="/orders" className="flex flex-row gap-2 w-full">
-                <Cart />
-                Pesanan Saya
+                  <Cart />
+                  Pesanan Saya
                 </RouterLink>
               </h3>
             </div>
@@ -53,14 +53,8 @@ const Orders = () => {
           <div className="w-full border-t border-bg-border my-3"></div>
 
           <div className="grid md:grid-cols-3 grid-rows w-full md:gap-3 gap-5">
-            <FloatingLabelInput
-              label="Nama Lengkap"
-              id="nama-lengkap"
-            />
-            <FloatingLabelInput 
-              label="E-Mail" 
-              id="E-Mail" 
-            />
+            <FloatingLabelInput label="Nama Lengkap" id="nama-lengkap" />
+            <FloatingLabelInput label="E-Mail" id="E-Mail" />
             <div className="flex flex-row gap-3 w-full">
               <div className="flex-grow">
                 <Select label="+62" isOpen={selectOpen} onClick={setSelectOpen}>
@@ -70,17 +64,13 @@ const Orders = () => {
                 </Select>
               </div>
               <div className="flex-grow">
-                <FloatingLabelInput
-                  label="No. Hp"
-                  id="No-Hp"
-                  width="w-full"
-                />
-                </div>
+                <FloatingLabelInput label="No. Hp" id="No-Hp" width="w-full" />
+              </div>
             </div>
           </div>
 
           <div className="flex ml-auto mt-2 w-full md:w-auto">
-            <Button variant="primary" btn={1} size="text-md" height="h-11" >
+            <Button variant="primary" btn={1} size="text-md" height="h-11">
               Simpan
             </Button>
           </div>
